@@ -25,6 +25,9 @@ export const generatePasswordHash = async function(password: string): Promise<st
 export const comparePassword = async function(password: string, hash: string): Promise<boolean> {
     try {
         const isMatch = await bcrypt.compare(password, hash);
+        if(!isMatch) {
+            throw new Error("Invalid credentials")
+        }
         return isMatch;
     }
     catch (err) {
