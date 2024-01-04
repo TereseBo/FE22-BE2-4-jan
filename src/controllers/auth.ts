@@ -57,7 +57,7 @@ const loginUser = async (req: Request, res: Response) => {
         }
         const token = generateAuthToken(user);
         res.status(201).json({ 
-            user: user.toJSON(), 
+            user: userToJSON(user), 
             token 
         });
     }
